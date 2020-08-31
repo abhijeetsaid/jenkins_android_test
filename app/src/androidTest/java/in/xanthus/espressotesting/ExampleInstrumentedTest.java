@@ -2,6 +2,7 @@ package in.xanthus.espressotesting;
 
 import android.content.Context;
 
+import androidx.test.espresso.ViewAction;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -12,12 +13,15 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.*;
 
 /**
@@ -41,6 +45,13 @@ public class ExampleInstrumentedTest {
     public void view_TypeText(){
         onView(withId(R.id.et_type)).perform(replaceText("Hello, Abhi !"));
         onView(withId(R.id.et_type)).perform(clearText());
+        onView(withId(R.id.et_type)).perform(clearText());
+        onView(withId(R.id.et_type)).perform((ViewAction) isEnabled());
+        onView(withId(R.id.tv_hello_world)).check(matches(isEnabled()));
+        onView(withText("Hello World!")).perform(click());
+        onView(withId(R.id.tv_hello_world)).check(matches(not(isEnabled())));
+
+
     }
 
     @Test
