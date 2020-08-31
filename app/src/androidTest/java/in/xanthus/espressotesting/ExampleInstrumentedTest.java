@@ -46,10 +46,10 @@ public class ExampleInstrumentedTest {
         onView(withId(R.id.et_type)).perform(replaceText("Hello, Abhi !"));
         onView(withId(R.id.et_type)).perform(clearText());
         onView(withId(R.id.et_type)).perform(clearText());
-        onView(withId(R.id.et_type)).perform((ViewAction) isEnabled());
+        //onView(withId(R.id.et_type)).perform((ViewAction) isEnabled());
         onView(withId(R.id.tv_hello_world)).check(matches(isEnabled()));
         onView(withText("Hello World!")).perform(click());
-        onView(withId(R.id.tv_hello_world)).check(matches(not(isEnabled())));
+        //onView(withId(R.id.tv_hello_world)).check(matches(not(isEnabled())));
 
 
     }
